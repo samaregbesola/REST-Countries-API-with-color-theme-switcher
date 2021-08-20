@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+
+/* .dark {
+    --color-bg-primary: hsl(207, 26%, 17%);
+  --color-primary: hsl(209, 23%, 22%);
+  --color-text-primary: hsl(0, 0%, 100%);
+}
+
+.light {
+    --color-bg-primary: hsl(0, 0%, 98%)
+  --color-primary: hsl(0, 0%, 100%);
+  --color-text-primary: hsl(200, 15%, 8%);
+  --color-input: hsl(0, 0%, 52%);
+} */
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
