@@ -8,7 +8,8 @@ const Card = ({ id, name, flag, population, region, capital }) => {
         <h2 className="text-xl mb-4 font-extrabold">{name}</h2>
         <p className=" mb-1">
           {' '}
-          <span className="font-semibold">population:</span> {population}
+          <span className="font-semibold">population:</span>{' '}
+          {population.toLocaleString()}
         </p>
         <p className=" mb-1">
           {' '}

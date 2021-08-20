@@ -4,14 +4,30 @@ import { useCallback } from 'react';
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-  const [loading, setLoading] = useState(true);
+  let [loading, setLoading] = useState(true);
+  const [miniLoading, setMiniLoading] = useState(true);
   const [countries, setCountries] = useState([]);
-  const url = 'https://restcountries.eu/rest/v2/all';
+  const [region, setRegion] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const fetchCountries = async () => {
+  const urlAll = 'https://restcountries.eu/rest/v2/all';
+  const urlRegion = `https://restcountries.eu/rest/v2/region/${region}`;
+  const urlSearch = `https://restcountries.eu/rest/v2/name/${searchTerm}`;
+
+  const openDropdown = () => {
+    setIsDropdownOpen(true);
+  };
+
+  const closeDropdown = () => {
+    setIsDropdownOpen(false);
+  };
+
+  //fetch countries on startup
+  const fetchAllCountries = async () => {
     setLoading(true);
     try {
-      const response = await fetch(url);
+      const response = await fetch(urlAll);
       const data = await response.json();
       if (data) {
         setCountries(data);
@@ -24,11 +40,67 @@ const AppProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchCountries();
+    fetchAllCountries();
   }, []);
 
+  //fetch countries by region
+  const fetchRegion = useCallback(async () => {
+    setLoading(true);
+    try {
+      const response = await fetch(urlRegion);
+      const data = await response.json();
+      if (data) {
+        setCountries(data);
+      }
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  }, [urlRegion]);
+
+  useEffect(() => {
+    fetchRegion();
+  }, [region, fetchRegion]);
+
+  //fetch countries by search
+  const fetchSearch = useCallback(async () => {
+    setMiniLoading(true);
+    try {
+      const response = await fetch(urlSearch);
+      const data = await response.json();
+      if (data) {
+        setCountries(data);
+      } else {
+        console.log('country not found');
+      }
+      setMiniLoading(false);
+    } catch (error) {
+      console.log(error);
+      setMiniLoading(false);
+    }
+  }, [urlSearch]);
+
+  useEffect(() => {
+    fetchSearch();
+  }, [searchTerm, fetchSearch]);
+
   return (
-    <AppContext.Provider value={{ loading, countries }}>
+    <AppContext.Provider
+      value={{
+        loading,
+        miniLoading,
+        countries,
+        setCountries,
+        isDropdownOpen,
+        openDropdown,
+        closeDropdown,
+        region,
+        setRegion,
+        searchTerm,
+        setSearchTerm,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );
