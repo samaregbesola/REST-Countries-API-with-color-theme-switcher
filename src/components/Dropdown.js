@@ -3,13 +3,19 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 import { useGlobalContext } from '../context';
 
 const Dropdown = () => {
-  const { isDropdownOpen, openDropdown, setRegion } = useGlobalContext();
+  const { isDropdownOpen, closeDropdown, openDropdown, setRegion } =
+    useGlobalContext();
+
+  const dropdownFunctionality = region => {
+    setRegion(region);
+    closeDropdown();
+  };
 
   return (
     <div className="mt-12 sm:mt-0">
       <button
         onMouseOver={openDropdown}
-        className="toggle text-sm shadow-md rounded-md border-0 p-5 dark:bg-darkBlue dark:text-white bg-white flex justify-between items-center"
+        className="toggle text-base md:text-sm shadow-md rounded-md border-0 p-5 dark:bg-darkBlue dark:text-white bg-white flex justify-between items-center"
       >
         <span className="block mr-8">Filter by Region</span>
         <span className="block text-lg">
@@ -17,12 +23,12 @@ const Dropdown = () => {
         </span>
       </button>
       {isDropdownOpen && (
-        <ul className="toggle z-10 mt-1 py-3 bg-white dark:bg-darkBlue dark:text-white border-0 cursor-pointer rounded-md shadow-md transform absolute transition duration-150 ease-in-out origin-top min-w-32">
+        <ul className="toggle z-10 mt-1 py-3 pr-1 md:pr-0 text-base md:text-sm bg-white dark:bg-darkBlue dark:text-white border-0 cursor-pointer rounded-md shadow-md transform absolute transition duration-150 ease-in-out origin-top min-w-32">
           <li
             className="pl-5 py-1 hover:bg-veryDarkBlueBg hover:text-white"
             style={{ paddingRight: '109px' }}
             onClick={() => {
-              setRegion('africa');
+              dropdownFunctionality('africa');
             }}
           >
             Africa
@@ -30,28 +36,28 @@ const Dropdown = () => {
           <li
             className="pl-5 py-1 hover:bg-veryDarkBlueBg hover:text-white"
             style={{ paddingRight: '109px' }}
-            onClick={() => setRegion('americas')}
+            onClick={() => dropdownFunctionality('americas')}
           >
             Americas
           </li>
           <li
             className="pl-5 py-1 hover:bg-veryDarkBlueBg hover:text-white"
             style={{ paddingRight: '109px' }}
-            onClick={() => setRegion('asia')}
+            onClick={() => dropdownFunctionality('asia')}
           >
             Asia
           </li>
           <li
             className="pl-5 py-1 hover:bg-veryDarkBlueBg hover:text-white"
             style={{ paddingRight: '109px' }}
-            onClick={() => setRegion('europe')}
+            onClick={() => dropdownFunctionality('europe')}
           >
             Europe
           </li>
           <li
             className="pl-5 py-1 hover:bg-veryDarkBlueBg hover:text-white"
             style={{ paddingRight: '109px' }}
-            onClick={() => setRegion('oceania')}
+            onClick={() => dropdownFunctionality('oceania')}
           >
             Oceania
           </li>

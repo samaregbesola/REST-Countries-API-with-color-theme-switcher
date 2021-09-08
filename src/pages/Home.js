@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import Card from '../components/Card';
 import Search from '../components/Search';
 import Dropdown from '../components/Dropdown';
@@ -91,7 +91,7 @@ const Home = () => {
     <>
       <div className="py-12 max-w-7xl w-11/12 md:w-11/12 mx-auto">
         <div className="mb-12 sm:flex sm:flex-auto  sm:justify-between sm:items-center">
-          <div className=" sm:flex-auto">
+          <div className="sm:flex-auto">
             <Search />
           </div>
           <div className="toggle">
@@ -104,7 +104,7 @@ const Home = () => {
         >
           {countries &&
             countries.map(country => {
-              const { numericCode: id } = country;
+              const { alpha3Code: id } = country;
               return <Card key={id} {...country} />;
             })}
         </div>

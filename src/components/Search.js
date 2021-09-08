@@ -31,7 +31,7 @@ const Search = () => {
       </button>
       <input
         type="text"
-        className="bg-white dark:bg-darkBlue text-sm shadow-md rounded-md border-0 py-5 pl-24 pr-12 placeholder-gray-400 dark:placeholder-white outline-none w-full max-w-md"
+        className="bg-white dark:bg-darkBlue text-base md:text-sm shadow-md rounded-md border-0 py-5 pl-24 pr-12 placeholder-gray-400 dark:placeholder-white outline-none w-full max-w-md"
         placeholder="Search for a Country..."
         ref={searchValue}
         onChange={searchCountries}
