@@ -13,7 +13,7 @@ const CountryDetails = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://restcountries.eu/rest/v2/name/${name}?fullText=true`
+        `https://restcountries.com/rest/v2/name/${name}?fullText=true`
       );
       const data = await response.json();
       if (data) {

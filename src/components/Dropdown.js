@@ -23,7 +23,7 @@ const Dropdown = () => {
         </span>
       </button>
       {isDropdownOpen && (
-        <ul className="toggle z-10 mt-1 py-3 pr-1 md:pr-0 text-base md:text-sm bg-white dark:bg-darkBlue dark:text-white border-0 cursor-pointer rounded-md shadow-md transform absolute transition duration-150 ease-in-out origin-top min-w-32">
+        <ul className="z-10 mt-1 py-3 pr-1 md:pr-0 text-base md:text-sm bg-white dark:bg-darkBlue dark:text-white border-0 cursor-pointer rounded-md shadow-md transform absolute transition duration-150 ease-in-out origin-top min-w-32">
           <li
             className="pl-5 py-1 hover:bg-veryDarkBlueBg hover:text-white"
             style={{ paddingRight: '109px' }}
