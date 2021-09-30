@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { FaArrowLeft } from 'react-icons/fa';
-import Loading from '../components/Loading';
+import MiniLoading from '../components/MiniLoading';
 import { useParams, Link, useHistory } from 'react-router-dom';
 
 const CountryDetails = () => {
@@ -30,7 +30,7 @@ const CountryDetails = () => {
   }, [name]);
 
   if (loading) {
-    return <Loading />;
+    return <MiniLoading />;
   }
   if (!country) {
     return (
