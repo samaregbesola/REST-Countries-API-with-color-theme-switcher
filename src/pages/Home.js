@@ -10,6 +10,7 @@ import useInfiniteScroll from '../useInfiniteScroll';
 const Home = () => {
   const { loading, countries, closeDropdown, region, searchTerm, miniLoading } =
     useGlobalContext();
+  console.log(countries);
 
   if (loading) {
     <Loading />;
@@ -102,7 +103,7 @@ const Home = () => {
           className="mx-5 sm:mx-0 grid gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
           onMouseOver={closeDropdown}
         >
-          {countries &&
+          {countries.length > 1 &&
             countries.map(country => {
               const { alpha3Code: id } = country;
               return <Card key={id} {...country} />;

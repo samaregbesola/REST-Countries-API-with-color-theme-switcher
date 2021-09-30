@@ -11,9 +11,9 @@ const AppProvider = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const urlAll = 'https://restcountries.com/rest/v2/all';
-  const urlRegion = `https://restcountries.com/rest/v2/region/${region}`;
-  const urlSearch = `https://restcountries.com/rest/v2/name/${searchTerm}`;
+  const urlAll = 'https://restcountries.com/v2/all';
+  const urlRegion = `https://restcountries.com//v2/region/${region}`;
+  const urlSearch = `https://restcountries.com/v2/name/${searchTerm}`;
 
   const openDropdown = () => {
     setIsDropdownOpen(true);
@@ -30,6 +30,7 @@ const AppProvider = ({ children }) => {
       const response = await fetch(urlAll);
       const data = await response.json();
       if (data) {
+        console.log(data);
         setCountries(data);
       }
       setLoading(false);
