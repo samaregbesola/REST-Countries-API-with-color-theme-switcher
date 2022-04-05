@@ -12,7 +12,7 @@ const AppProvider = ({ children }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const urlAll = 'https://restcountries.com/v2/all';
-  const urlRegion = `https://restcountries.com//v2/region/${region}`;
+  const urlRegion = `https://restcountries.com/v2/region/${region}`;
   const urlSearch = `https://restcountries.com/v2/name/${searchTerm}`;
 
   const openDropdown = () => {
